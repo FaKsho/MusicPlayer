@@ -21,17 +21,7 @@ public class MusicControlPane extends HBox {
 	
 	private ArrayList<MusicControlButton> controls;
 	
-	private static MediaPlayer mediaPlayer; 
-	
-	private static boolean playing;
-	
-	private static File fileSetted;
-	
-	ListView<File> lv = MusicListPane.getPlayList();
-	
 	public MusicControlPane() {
-		
-		playing = false;
 		
 		// layout setup
 		
@@ -56,24 +46,26 @@ public class MusicControlPane extends HBox {
 		controls.add(nextButton);
 		
 		getChildren().addAll(controls);
+	
 		
 	}
 	
 	
 	public void playHandler() {
 		
-		fileSetted = lv.getSelectionModel().getSelectedItem();
-		
-		mediaPlayer.setVolume(0.05);
+		boolean playing = PlayerEventHandler.isPlaying();
 		
 		try {
 			
 			if(!playing) {
-				mediaPlayer.play();
-				playing = true;
+				
+				PlayerEventHandler.play();
+				
+				
 			} else {
-				mediaPlayer.pause();
-				playing = false;
+				
+				PlayerEventHandler.pause();
+				
 			}
 			
 		} catch (Exception e) {
@@ -85,17 +77,4 @@ public class MusicControlPane extends HBox {
 	
 	}
 	
-
-	public static MediaPlayer startMediaPlayer() {	
-		
-		mediaPlayer = new MediaPlayer(new Media(fileSetted.toURI().toString()));
-		return mediaPlayer;
-	}
-	
-	public static boolean isPlaying() {
-		
-		return playing;
-	}
-	
-
 }

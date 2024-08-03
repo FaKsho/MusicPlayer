@@ -65,7 +65,7 @@ public class MainPane extends BorderPane {
 			
 		File file = fs.openFileSelector();
 			
-		MusicListPane.setFiles(file);
+		MusicListPane.setListFiles(file);
 
 	}
 		
@@ -73,7 +73,7 @@ public class MainPane extends BorderPane {
 			
 		File folder = FolderSelector.openFolderSelector();
 			
-		MusicListPane.setFiles(folder.listFiles());
+		MusicListPane.setListFiles(folder.listFiles());
 
 	}
 

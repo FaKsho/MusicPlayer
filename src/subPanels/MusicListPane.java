@@ -11,6 +11,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
 import models.FolderSelector;
+import models.PlayerEventHandler;
 
 
 // Es un stackPane pq no se me ocurre q otra panel usar
@@ -23,19 +24,25 @@ public class MusicListPane extends StackPane {
 		new FolderSelector();
 		
 		playList = new ListView<File>();
-		//playList.set
+		playList.setOnMouseClicked(e -> {
+			new PlayerEventHandler(playList.getSelectionModel().getSelectedItem());
+			PlayerEventHandler.play();
+		});
 		
 		getChildren().add(playList);
 		
 	}
 	
-	public static void setFiles(File... files) {
+	
+	// # Setea los archivos que se muestran en la lista de canciones
+	public static void setListFiles(File... files) {
 		
 		playList.getItems().clear();
 		
 		ObservableList<File> observableFiles = FXCollections.observableArrayList(files);
 		
 		playList.setItems(observableFiles);
+		
 
 		//TODO: hacer un filtro de solo archivos de audio
 		

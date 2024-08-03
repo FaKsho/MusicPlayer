@@ -11,7 +11,7 @@ public class PlayPauseButton extends MusicControlButton {
 		
 		this.setText("|>");
 		
-		this.playing = MusicControlPane.isPlaying();
+		this.playing = PlayerEventHandler.isPlaying();
 	
 		this.setOnAction(e -> update());
 	}	

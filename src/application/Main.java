@@ -16,8 +16,6 @@ public class Main extends Application {
 		
 		this.primaryStage = primaryStage;
 		
-		
-		
 		try {
 			
 			MainPane root = new MainPane();
